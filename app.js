@@ -76,9 +76,9 @@ const sessionOptions = {
 };
 
 
-app.all("*", (req, res) => {
-  res.send(listings);
-});
+// app.all("*", (req, res) => {
+//   res.send(listings);
+// });
 
 
 
@@ -113,9 +113,9 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
   
   
-  // app.all("*", ( req ,res, next) => {
-  //   next(new ExpressError(404,"Page Not Found" ));
-  // });
+  app.all("*", ( req ,res, next) => {
+    next(new ExpressError(404, "Welcome to the Wonderlust page"));
+  });
 
   app.use((err, req, res , next) => {
     let {statusCode = 500, message = "Something went wrong!"} = err;
